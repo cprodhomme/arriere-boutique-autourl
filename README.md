@@ -44,17 +44,12 @@ new_path_for(user, prefix: "admin")
 Add this line to your application's Gemfile:
 
 ```ruby
-gem "arriere-boutique-autourl"
+gem "arriere-boutique-autourl", git: "https://github.com/cprodhomme/arriere-boutique-autourl"
 ```
 
 And then execute:
 ```bash
 $ bundle
-```
-
-Or install it yourself as:
-```bash
-$ gem install arriere-boutique-autourl
 ```
 
 ## Contributing
