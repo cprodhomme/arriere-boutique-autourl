@@ -67,6 +67,60 @@ describe AutoUrlHelper, type: :helper do
     end
   end
 
+  describe "show" do
+    describe "#show_path_for(record)" do
+      let(:user) { User.new id: 1 }
+
+      it "get /users" do
+        expect(helper.show_path_for(user)).to eq(user_path(user))
+      end
+
+      context "with additional params" do
+        it "get /users?key=value" do
+          expect(helper.show_path_for(user, key: "value")).to eq(user_path(user, key: "value"))
+        end
+      end
+
+      context "with anchor" do
+        it "get /users#title1" do
+          expect(helper.show_path_for(user, anchor: "title1")).to eq(user_path(user, anchor: "title1"))
+        end
+      end
+
+      context "with prefix" do
+        it "get /admin/users#title1" do
+          expect(helper.show_path_for(user, prefix: "admin")).to eq(admin_user_path(user))
+        end
+      end
+    end
+
+    describe "#show_url_for(record)" do
+      let(:user) { User.new id: 1 }
+
+      it "get /users" do
+        expect(helper.show_url_for(user)).to eq(user_url(user))
+      end
+
+      context "with additional params" do
+        it "get /users?key=value" do
+          expect(helper.show_url_for(user, key: "value")).to eq(user_url(user, key: "value"))
+        end
+      end
+
+      context "with anchor" do
+        it "get /users#title1" do
+          expect(helper.show_url_for(user, anchor: "title1")).to eq(user_url(user, anchor: "title1"))
+        end
+      end
+
+      context "with prefix" do
+        it "get /admin/users#title1" do
+          expect(helper.show_url_for(user, prefix: "admin")).to eq(admin_user_url(user))
+        end
+      end
+    end
+  end
+
   describe "new" do
     describe "#new_path_for(record)" do
       let(:user) { User.new id: 1 }

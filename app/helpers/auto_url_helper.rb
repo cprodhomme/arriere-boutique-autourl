@@ -4,7 +4,7 @@ module AutoUrlHelper
   # index_url_for
   # new_path_for
   # ...
-  [:index, :new, :create, :show].each do |action|
+  [:index, :new, :create].each do |action|
     define_method("#{action}_path_for") do |record, prefix: nil, **additional_params|
       helper_name = helper_name(record, action: action, suffix: "path", prefix: prefix)
       send(helper_name, additional_params)
@@ -21,7 +21,7 @@ module AutoUrlHelper
   # edit_url_for
   # update_path_for
   # ...
-  [:edit, :update, :destroy].each do |action|
+  [:show, :edit, :update, :destroy].each do |action|
     define_method("#{action}_path_for") do |record, prefix: nil, **additional_params|
       helper_name = helper_name(record, action: action, suffix: "path", prefix: prefix)
       send(helper_name, record, additional_params)
