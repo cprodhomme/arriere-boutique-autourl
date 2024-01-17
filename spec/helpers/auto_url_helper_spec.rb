@@ -5,30 +5,30 @@ describe AutoUrlHelper, type: :helper do
     describe "#index_path_for(record)" do
       let(:user) { User.new id: 1 }
 
-      it "get /users/1/new" do
+      it "get /users" do
         expect(helper.index_path_for(user)).to eq(users_path)
       end
 
       context "with additional params" do
-        it "get /users/1/new?key=value" do
+        it "get /users?key=value" do
           expect(helper.index_path_for(user, key: "value")).to eq(users_path(key: "value"))
         end
       end
 
       context "with anchor" do
-        it "get /users/1/new#title1" do
+        it "get /users#title1" do
           expect(helper.index_path_for(user, anchor: "title1")).to eq(users_path(anchor: "title1"))
         end
       end
 
       context "with prefix" do
-        it "get /admin/users/1/new#title1" do
+        it "get /admin/users#title1" do
           expect(helper.index_path_for(user, prefix: "admin")).to eq(admin_users_path)
         end
       end
 
       context "when record is a model class" do
-        it "get /users/1/new" do
+        it "get /users" do
           expect(helper.index_path_for(User)).to eq(users_path)
         end
       end
@@ -37,30 +37,30 @@ describe AutoUrlHelper, type: :helper do
     describe "#index_url_for(record)" do
       let(:user) { User.new id: 1 }
 
-      it "get /users/1/new" do
+      it "get /users" do
         expect(helper.index_url_for(user)).to eq(users_url)
       end
 
       context "with additional params" do
-        it "get /users/1/new?key=value" do
+        it "get /users?key=value" do
           expect(helper.index_url_for(user, key: "value")).to eq(users_url(key: "value"))
         end
       end
 
       context "with anchor" do
-        it "get /users/1/new#title1" do
+        it "get /users#title1" do
           expect(helper.index_url_for(user, anchor: "title1")).to eq(users_url(anchor: "title1"))
         end
       end
 
       context "with prefix" do
-        it "get /admin/users/1/new#title1" do
+        it "get /admin/users#title1" do
           expect(helper.index_url_for(user, prefix: "admin")).to eq(admin_users_url)
         end
       end
 
       context "when record is a model class" do
-        it "get /users/1/new" do
+        it "get /users" do
           expect(helper.index_url_for(User)).to eq(users_url)
         end
       end
